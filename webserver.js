@@ -1,3 +1,12 @@
+#! /usr/bin/env node
+
+if (process.argv[2] == "-h" || process.argv[2] == "-help") {
+	console.log(`webserver <WEBSERVER-DIRECTORY || CURRENT-DIRECTORY> <ERROR-PAGE-DIRECTORY || WEBSERVER-DIRECTORY (optional)>`)
+	console.log("E.g., webserver ./content ./content/errors/")
+
+	return
+}
+
 const path = process.argv[2] || __dirname
 const errPath = process.argv[3] || path
 
