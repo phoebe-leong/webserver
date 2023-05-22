@@ -1,5 +1,5 @@
 # webserver
-Fork of my "bored" webserver turned into a dynamic command-line interface
+Fork of [phoebe-leong/bored](https://github.com/phoebe-leong/bored) turned into a dynamic command-line interface
 
 ## dependencies
 - [ExpressJS](https://expressjs.com) `npm i express`
