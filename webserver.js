@@ -7,8 +7,9 @@ if (process.argv[2] == "-h" || process.argv[2] == "-help") {
 	return
 }
 
-const path = process.argv[2] || __dirname
+const path = process.argv[2] || process.cwd()
 const errPath = process.argv[3] || path
+const port = parseInt(process.argv[4]) || 8000
 
 const express = require("express")
 const app = express()
@@ -48,11 +49,13 @@ app.get("/favicon.png", (req, res) => {
 	res.sendFile(`${path}/favicon.png`)
 })
 
-app.use((req, res) => {
-	fs.readFile(`${errPath}/404.html`, "utf-8", (error, data) => {
-		if (error) { console.error(error) }
-		else { res.status(404).send(data) }
+if (errPath != "null" && errPath != "nil") {
+	app.use((req, res) => {
+		fs.readFile(`${errPath}/404.html`, "utf-8", (error, data) => {
+			if (error) { console.error(error) }
+			else { res.status(404).send(data) }
+		})
 	})
-})
+}
 
-app.listen(8000, () => console.log("Listening on port 8000"))
+app.listen(port, () => console.log(`Listening on port ${port}`))
